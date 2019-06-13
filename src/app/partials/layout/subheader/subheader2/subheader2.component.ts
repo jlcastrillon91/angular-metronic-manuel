@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { SubheaderService } from '../../../../core/_base/layout';
 import { Breadcrumb } from '../../../../core/_base/layout/services/subheader.service';
 import { UiHelperService } from '../../../../dashboard/services/ui-helper.service';
+import { CustomDropdownConfig } from '../../../content/widgets/custom-dropdown/dropdown-config.model';
 
 @Component({
   selector: 'kt-subheader2',
@@ -22,6 +23,24 @@ export class Subheader2Component implements OnInit, OnDestroy, AfterViewInit {
   // Private properties
   private subscriptions: Subscription[] = [];
 
+  dateDropdownCfg: CustomDropdownConfig = {
+    title: 'Today',
+    items: [
+      {
+        label: 'Jan 31',
+        value: 'Jan 31'
+      },
+      {
+        label: 'Feb 1',
+        value: 'Feb 1'
+      },
+      {
+        label: 'Feb 2',
+        value: 'Feb 2'
+      }
+    ]
+  };
+
   /**
    * Component constructor
    *
@@ -30,7 +49,7 @@ export class Subheader2Component implements OnInit, OnDestroy, AfterViewInit {
   constructor(
     public subheaderService: SubheaderService,
     private uiHelper: UiHelperService
-    ) {}
+  ) {}
 
   /**
    * @ Lifecycle sequences => https://angular.io/guide/lifecycle-hooks

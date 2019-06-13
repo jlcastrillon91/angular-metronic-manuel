@@ -28,6 +28,7 @@ import {
 } from 'rxjs/operators';
 import { LinkEditComponent } from '../link-edit/link-edit.component';
 import { UiHelperService } from '../../services/ui-helper.service';
+import { CustomDropdownConfig } from '../../../partials/content/widgets/custom-dropdown/dropdown-config.model';
 
 @Component({
   selector: 'kt-links-list',
@@ -58,6 +59,78 @@ export class LinksListComponent implements OnInit {
   linksResult: Link[] = [];
   // Subscriptions
   private subscriptions: Subscription[] = [];
+
+  accountDropdownCfg: CustomDropdownConfig = {
+    title: 'Account',
+    items: [
+      {
+        label: 'ALL',
+        value: 'ALL'
+      },
+      {
+        label: 'Value 1',
+        value: 'Value 1'
+      },
+      {
+        label: 'Value 2',
+        value: 'Value 2'
+      }
+    ]
+  };
+
+  domainsDropdownCfg: CustomDropdownConfig = {
+    title: 'Domains',
+    items: [
+      {
+        label: 'drinks.me',
+        value: 'drinks.me'
+      },
+      {
+        label: 'Value 1',
+        value: 'Value 1'
+      },
+      {
+        label: 'Value 2',
+        value: 'Value 2'
+      }
+    ]
+  };
+
+  usersDropdownCfg: CustomDropdownConfig = {
+    title: 'Users',
+    items: [
+      {
+        label: 'All Users',
+        value: 'ALL_USERS'
+      },
+      {
+        label: 'Value 1',
+        value: 'Value 1'
+      },
+      {
+        label: 'Value 2',
+        value: 'Value 2'
+      }
+    ]
+  };
+
+  tagsDropdownCfg: CustomDropdownConfig = {
+    title: 'Tags',
+    items: [
+      {
+        label: 'All tags',
+        value: 'ALL_TAGS'
+      },
+      {
+        label: 'Value 1',
+        value: 'Value 1'
+      },
+      {
+        label: 'Value 2',
+        value: 'Value 2'
+      }
+    ]
+  };
 
   /**
    * Component constructor
@@ -91,7 +164,9 @@ export class LinksListComponent implements OnInit {
     );
     this.subscriptions.push(sortSubscription);
 
-    const createLinkBtnSuscription = this.uiHelper.createLinkBtnClicks$.subscribe(() => this.addLink())
+    const createLinkBtnSuscription = this.uiHelper.createLinkBtnClicks$.subscribe(
+      () => this.addLink()
+    );
     this.subscriptions.push(createLinkBtnSuscription);
 
     /* Data load will be triggered in two cases:
@@ -105,23 +180,6 @@ export class LinksListComponent implements OnInit {
       .pipe(tap(() => this.loadLinksList()))
       .subscribe();
     this.subscriptions.push(paginatorSubscriptions);
-
-    // Filtration, bind to searchInput
-    const searchSubscription = fromEvent(
-      this.searchInput.nativeElement,
-      'keyup'
-    )
-      .pipe(
-        // tslint:disable-next-line:max-line-length
-        debounceTime(50), // The user can type quite quickly in the input box, and that could trigger a lot of server requests. With this operator, we are limiting the amount of server requests emitted to a maximum of one every 150ms
-        distinctUntilChanged(), // This operator will eliminate duplicate values
-        tap(() => {
-          this.paginator.pageIndex = 0;
-          this.loadLinksList();
-        })
-      )
-      .subscribe();
-    this.subscriptions.push(searchSubscription);
 
     // Init DataSource
     this.dataSource = new LinksDataSource(this.store);
@@ -159,7 +217,7 @@ export class LinksListComponent implements OnInit {
   loadLinksList() {
     this.selection.clear();
     const queryParams = new QueryParamsModel(
-      this.filterConfiguration(),
+      {},
       this.sort.direction,
       this.sort.active,
       this.paginator.pageIndex,
@@ -292,41 +350,6 @@ export class LinksListComponent implements OnInit {
     });
     this.layoutUtilsService.fetchElements(messages);
   }
-
-  // /**
-  //  * Show UpdateStatuDialog for selected customers
-  //  */
-  // updateStatusForCustomers() {
-  // 	const _title = this.translate.instant('ECOMMERCE.CUSTOMERS.UPDATE_STATUS.TITLE');
-  // 	const _updateMessage = this.translate.instant('ECOMMERCE.CUSTOMERS.UPDATE_STATUS.MESSAGE');
-  // 	const _statuses = [{ value: 0, text: 'Suspended' }, { value: 1, text: 'Active' }, { value: 2, text: 'Pending' }];
-  // 	const _messages = [];
-
-  // 	this.selection.selected.forEach(elem => {
-  // 		_messages.push({
-  // 			text: elem.url,
-  // 			id: elem.id.toString(),
-  // 			status: elem.status,
-  // 			statusCssClass: this.getItemCssClassByStatus(elem.status)
-  // 		});
-  // 	});
-
-  // 	const dialogRef = this.layoutUtilsService.updateStatusForEntities(_title, _statuses, _messages);
-  // 	dialogRef.afterClosed().subscribe(res => {
-  // 		if (!res) {
-  // 			this.selection.clear();
-  // 			return;
-  // 		}
-
-  // 		this.store.dispatch(new fromStore.LinksStatusUpdated({
-  // 			status: +res,
-  // 			customers: this.selection.selected
-  // 		}));
-
-  // 		this.layoutUtilsService.showActionNotification(_updateMessage, MessageType.Update, 10000, true, true);
-  // 		this.selection.clear();
-  // 	});
-  // }
 
   /**
    * Show add link dialog

@@ -155,7 +155,7 @@ export class MenuHorizontalComponent implements OnInit, AfterViewInit {
     }
 
     if (this.isMenuItemIsActive(item)) {
-      classes += ' kt-menu__item--active kt-menu__item--here';
+      classes += ' active-menu-link';
     }
 
     return classes;

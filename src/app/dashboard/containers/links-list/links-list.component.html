@@ -1,74 +1,45 @@
+<div class="row align-items-center d-flex justify-content-between" style="margin: 20px 0">
+
+  <div class="col-md-2 kt-margin-bottom-10-mobile">
+    <div class="kt-form__control">
+      <kt-custom-dropdown [config]="accountDropdownCfg"></kt-custom-dropdown>
+    </div>
+  </div>
+  
+  <div class="col-md-2 kt-margin-bottom-10-mobile">
+    <div class="kt-form__control">
+      <kt-custom-dropdown [config]="domainsDropdownCfg"></kt-custom-dropdown>
+    </div>
+  </div>
+  
+  <div class="col-md-2 kt-margin-bottom-10-mobile">
+    <div class="kt-form__control">
+      <kt-custom-dropdown [config]="usersDropdownCfg"></kt-custom-dropdown>
+    </div>
+  </div>
+  
+  <div class="col-md-2 kt-margin-bottom-10-mobile">
+    <div class="kt-form__control">
+      <kt-custom-dropdown [config]="tagsDropdownCfg"></kt-custom-dropdown>
+    </div>
+  </div>
+
+  <!-- <div class="col-md-2 kt-margin-bottom-10-mobile">
+    <mat-form-field class="mat-form-field-fluid">
+      <input matInput placeholder="Search customer" #searchInput placeholder="Search">
+      <mat-hint align="start">
+        <strong>Search</strong> in all fields
+      </mat-hint>
+    </mat-form-field>
+  </div> -->
+
+</div>
+
 <kt-portlet>
-  <!-- See prop => '../../_core/models/data-sources/_base.datasource.ts' (loading$) -->
-  <!-- <kt-portlet-header [class]="'kt-portlet__head--lg'" [viewLoading$]="dataSource.loading$">
-    
-    <ng-container ktPortletTitle>
-      <h3 class="kt-portlet__head-title">
-        <span translate="ECOMMERCE.CUSTOMERS.CUSTOMERS_LIST">Links list</span>
-      </h3>      
-    </ng-container>
-
-    <ng-container ktPortletTools>
-      <button (click)="addLink()" mat-raised-button matTooltip="Create new customer" color="primary" type="button">
-        <span translate="ECOMMERCE.CUSTOMERS.NEW_CUSTOMER">New Customer</span>
-      </button>      
-    </ng-container>
-  </kt-portlet-header> -->
-  <!-- end::Header -->
-
-  <kt-portlet-body>
-    <!-- start::FILTERS & GROUP ACTIONS -->
+  
+  <kt-portlet-body>    
     <div class="kt-form kt-margin-b-30">
-      <!-- start::FILTERS -->
-      <div class="kt-form__filtration">
-        <div class="row align-items-center">
-
-          <!-- <div class="col-md-2 kt-margin-bottom-10-mobile">
-            
-            <div class="kt-form__control">
-              <mat-form-field class="mat-form-field-fluid">
-                <mat-select [(value)]="filterStatus" (selectionChange)="loadCustomersList()">
-                  <mat-option value="">All</mat-option>
-                  <mat-option value="0">Suspended</mat-option>
-                  <mat-option value="1">Active</mat-option>
-                  <mat-option value="Pending">Pending</mat-option>
-                </mat-select>
-                <mat-hint align="start">
-                  <strong>Filter</strong> by Status
-                </mat-hint>
-              </mat-form-field>
-            </div>
-          </div> -->
-
-          <!-- <div class="col-md-2 kt-margin-bottom-10-mobile">
-
-            <div class="kt-form__control">
-              <mat-form-field class="mat-form-field-fluid">
-                <mat-select [(value)]="filterType" (selectionChange)="loadCustomersList()">
-                  <mat-option value="">All</mat-option>
-                  <mat-option value="0">Business</mat-option>
-                  <mat-option value="1">Individual</mat-option>
-                </mat-select>
-                <mat-hint align="start">
-                  <strong>Filter</strong> by Type
-                </mat-hint>
-              </mat-form-field>
-            </div>
-          </div> -->
-
-          <div class="col-md-2 kt-margin-bottom-10-mobile">
-            <mat-form-field class="mat-form-field-fluid">
-              <input matInput placeholder="Search customer" #searchInput placeholder="Search">
-              <mat-hint align="start">
-                <strong>Search</strong> in all fields
-              </mat-hint>
-            </mat-form-field>
-          </div>
-
-        </div>
-      </div>
-      <!-- end::FILTERS -->
-
+      
       <!-- start::GROUP ACTIONS -->
       <!-- Group actions list: 'Delete selected' | 'Fetch selected' | 'Update status for selected' -->
       <!-- Group actions are shared for all LISTS | See '../../_shared' folder -->

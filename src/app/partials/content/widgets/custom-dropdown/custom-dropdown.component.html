@@ -1,0 +1,23 @@
+<div ngbDropdown [placement]="'bottom-right'" 
+  id="custom-dropdown" 
+  class="dropdown dropdown-inline" 
+  data-placement="left">
+  <span id="dropdown-name">{{ config.title }}: </span>
+  <a ngbDropdownToggle href="javascript:;" 
+    class="btn"    
+    data-placement="left">
+    <span class="kt-subheader__btn-daterange-title"
+      id="title">
+      <strong>{{ selectedValue.label }}</strong>
+    </span>&nbsp;    
+    <span class="chevron-container">
+      <i class="flaticon2-down-arrow"></i>
+    </span>
+  </a>
+  <div ngbDropdownMenu class="dropdown-menu dropdown-menu-right p-3">
+    <a *ngFor="let item of config.items"
+      (click)="setSelectedValue(item)"
+      class="dropdown-item">{{ item.label }}</a>
+    
+  </div>
+</div>

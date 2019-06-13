@@ -20,17 +20,29 @@
 }
 
 .custom-btn {
-	padding: 0 30px !important;
+	padding: 6px 30px !important;
 	border-radius: 15px !important;
 	color: white !important;
 	box-shadow: 0 3px 14px -8px rgba(0,0,0,.2), 0 4px 16px 0px rgba(0,0,0,.14)
 	// background: #FFAD53;
 }
 
-.kt-header-menu .kt-menu__nav>.kt-menu__item.kt-menu__item--active>.kt-menu__link {
-	background-color: none !important
+
+.active-menu-link .kt-menu__link-text {
+	color: #fff !important;
+}
+
+@media (min-width: 1025px) {
+	.active-menu-link .kt-menu__link-text {
+		color: #fff !important;
+	}
 }
 
 mat-table mat-header-row {
 	background: #f4f5f8 !important;
+}
+
+.kt-footer, 
+.kt-footer .kt-footer__bottom {
+	background-color: transparent !important
 }

@@ -20,6 +20,8 @@ import { Widget12Component } from './widget12/widget12.component';
 import { Widget14Component } from './widget14/widget14.component';
 import { Widget26Component } from './widget26/widget26.component';
 import { Timeline2Component } from './timeline2/timeline2.component';
+import { CustomDropdownComponent } from './custom-dropdown/custom-dropdown.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,8 @@ import { Timeline2Component } from './timeline2/timeline2.component';
     Widget12Component,
     Widget14Component,
     Widget26Component,
-    Timeline2Component
+    Timeline2Component,
+    CustomDropdownComponent
   ],
   exports: [
     DataTableComponent,
@@ -42,10 +45,12 @@ import { Timeline2Component } from './timeline2/timeline2.component';
     Widget12Component,
     Widget14Component,
     Widget26Component,
-    Timeline2Component
+    Timeline2Component,
+    CustomDropdownComponent
   ],
   imports: [
     CommonModule,
+    NgbModule,
     PerfectScrollbarModule,
     MatTableModule,
     CoreModule,

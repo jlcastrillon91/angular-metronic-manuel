@@ -1,0 +1,33 @@
+#custom-dropdown {
+  background: #F4F4FF;
+  border-radius: 15px;
+  padding: 6px 5px;
+  display: flex;
+  justify-content: space-between;
+
+  span#dropdown-name {
+    padding: 0 10px;
+  }
+
+  a {
+    padding: 0;
+
+    span#title {
+      color: #716ACA;
+      font-weight: 900;
+      padding: 0 5px;
+    }
+
+    span.chevron-container {
+      background: #716ACA;
+      color: white;
+      padding: 5px;
+      border-radius: 50%;
+      text-align: center;
+
+      i {
+        padding-right: 1px !important
+      }
+    }
+  }
+}

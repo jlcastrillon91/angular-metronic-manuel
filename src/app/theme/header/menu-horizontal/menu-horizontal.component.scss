@@ -5,3 +5,20 @@
 		height: 100%;
 	}
 }
+
+.active-menu-link .kt-menu__link-text {
+	color: #fff !important;
+}
+
+.kt-menu__item.active-menu-link::after {
+	content: '';
+	display: block;
+	position: absolute;
+	bottom: -7px;
+	height: 0;
+	border-top: 7px solid black;
+	border-left: 10px solid transparent;
+	width: 0;
+	border-right: 10px solid transparent;
+	left: calc(50% - 8px);
+}
