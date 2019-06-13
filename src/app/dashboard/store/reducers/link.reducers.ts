@@ -51,7 +51,7 @@ export function reducer(state = initialState, action: LinkActions): LinksState {
     case LinkActionTypes.LinkCreated:
       return adapter.addOne(action.payload.link, {
         ...state,
-        lastCreatedCustomerId: action.payload.link.id
+        lastCreatedLinkId: action.payload.link.id
       });
 
     case LinkActionTypes.LinkUpdated:

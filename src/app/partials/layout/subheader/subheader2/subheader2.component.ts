@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 // Layout
 import { SubheaderService } from '../../../../core/_base/layout';
 import { Breadcrumb } from '../../../../core/_base/layout/services/subheader.service';
+import { UiHelperService } from '../../../../dashboard/services/ui-helper.service';
 
 @Component({
   selector: 'kt-subheader2',
@@ -26,7 +27,10 @@ export class Subheader2Component implements OnInit, OnDestroy, AfterViewInit {
    *
    * @param subheaderService: SubheaderService
    */
-  constructor(public subheaderService: SubheaderService) {}
+  constructor(
+    public subheaderService: SubheaderService,
+    private uiHelper: UiHelperService
+    ) {}
 
   /**
    * @ Lifecycle sequences => https://angular.io/guide/lifecycle-hooks
@@ -67,5 +71,9 @@ export class Subheader2Component implements OnInit, OnDestroy, AfterViewInit {
    */
   ngOnDestroy(): void {
     this.subscriptions.forEach(sb => sb.unsubscribe());
+  }
+
+  createLinkClick() {
+    this.uiHelper.notifyCreateLinkBtnClick();
   }
 }

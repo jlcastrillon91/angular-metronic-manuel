@@ -27,6 +27,7 @@ import {
   take
 } from 'rxjs/operators';
 import { LinkEditComponent } from '../link-edit/link-edit.component';
+import { UiHelperService } from '../../services/ui-helper.service';
 
 @Component({
   selector: 'kt-links-list',
@@ -72,7 +73,8 @@ export class LinksListComponent implements OnInit {
     public snackBar: MatSnackBar,
     private layoutUtilsService: LayoutUtilsService,
     private translate: TranslateService,
-    private store: Store<fromStore.LinksFeatureState>
+    private store: Store<fromStore.LinksFeatureState>,
+    private uiHelper: UiHelperService
   ) {}
 
   /**
@@ -88,6 +90,9 @@ export class LinksListComponent implements OnInit {
       () => (this.paginator.pageIndex = 0)
     );
     this.subscriptions.push(sortSubscription);
+
+    const createLinkBtnSuscription = this.uiHelper.createLinkBtnClicks$.subscribe(() => this.addLink())
+    this.subscriptions.push(createLinkBtnSuscription);
 
     /* Data load will be triggered in two cases:
 		- when a pagination event occurs => this.paginator.page
@@ -386,7 +391,7 @@ export class LinksListComponent implements OnInit {
   getItemCssClassByStatus(status: 'active' | 'inactive'): string {
     switch (status) {
       case 'active':
-        return 'success';
+        return 'warning';
       case 'inactive':
         return 'danger';
     }

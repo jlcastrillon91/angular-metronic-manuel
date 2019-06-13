@@ -39,6 +39,7 @@ import {
   MatSnackBarModule,
   MatTooltipModule
 } from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const MAT_MODULES = [
   MatInputModule,
@@ -66,6 +67,7 @@ const MAT_MODULES = [
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     PartialsModule,
     CoreModule,
     NgbModule,
