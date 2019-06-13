@@ -10,15 +10,11 @@ const routes: Routes = [
   // {path: '', loadChildren: 'app/views/themes/demo1/theme.module#ThemeModule'},
 
   /** START: remove this themes list on production */
-  { path: '', redirectTo: 'demo2', pathMatch: 'full' },
+  { path: '', redirectTo: 'app', pathMatch: 'full' },
   // list of routers specified by demos, for demo purpose only!
   {
-    path: 'demo1',
-    loadChildren: 'app/views/themes/demo1/theme.module#ThemeModule'
-  },
-  {
-    path: 'demo2',
-    loadChildren: 'app/views/themes/demo2/theme.module#ThemeModule'
+    path: 'app',
+    loadChildren: 'app/theme/theme.module#ThemeModule'
   },
 
   /** END: themes list end */

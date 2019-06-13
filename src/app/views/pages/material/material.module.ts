@@ -5,58 +5,59 @@ import { MaterialComponent } from './material.component';
 import { AutocompleteComponent } from './formcontrols/autocomplete/autocomplete.component';
 import { CheckboxComponent } from './formcontrols/checkbox/checkbox.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CodePreviewModule } from '../../partials/content/general/code-preview/code-preview.module';
-import { PartialsModule } from '../../partials/partials.module';
+import { CodePreviewModule } from '../../../partials/content/general/code-preview/code-preview.module';
+import { PartialsModule } from '../../../partials/partials.module';
 import { CoreModule } from '../../../core/core.module';
-import { MaterialPreviewModule } from '../../partials/content/general/material-preview/material-preview.module';
+import { MaterialPreviewModule } from '../../../partials/content/general/material-preview/material-preview.module';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatRippleModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatIconRegistry } from '@angular/material/icon';
 import {
-	MatAutocompleteModule,
-	MatNativeDateModule,
-	MatFormFieldModule,
-	MatInputModule,
-	MatRadioModule,
-	MatButtonModule,
-	MatCardModule,
-	MatChipsModule,
-	MatSelectModule,
-	MatProgressBarModule,
-	MatProgressSpinnerModule,
-	MatIconModule,
-	MatSliderModule,
-	MatPaginatorModule,
-	MatSortModule,
-	MatSidenavModule,
-	MatSnackBarModule,
-	MatStepperModule,
-	MatToolbarModule,
-	MatDividerModule,
-	MatTabsModule,
-	MatTableModule,
-	MatTooltipModule,
-	MatListModule,
-	MatGridListModule,
-	MatButtonToggleModule,
-	MatBottomSheetModule,
-	MatExpansionModule,
-	_MatChipListMixinBase,
-	MatMenuModule,
-	MatTreeModule,
-	MAT_BOTTOM_SHEET_DATA,
-	MatBottomSheetRef,
-	MAT_DATE_LOCALE,
-	MAT_DATE_FORMATS,
-
+  MatAutocompleteModule,
+  MatNativeDateModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRadioModule,
+  MatButtonModule,
+  MatCardModule,
+  MatChipsModule,
+  MatSelectModule,
+  MatProgressBarModule,
+  MatProgressSpinnerModule,
+  MatIconModule,
+  MatSliderModule,
+  MatPaginatorModule,
+  MatSortModule,
+  MatSidenavModule,
+  MatSnackBarModule,
+  MatStepperModule,
+  MatToolbarModule,
+  MatDividerModule,
+  MatTabsModule,
+  MatTableModule,
+  MatTooltipModule,
+  MatListModule,
+  MatGridListModule,
+  MatButtonToggleModule,
+  MatBottomSheetModule,
+  MatExpansionModule,
+  _MatChipListMixinBase,
+  MatMenuModule,
+  MatTreeModule,
+  MAT_BOTTOM_SHEET_DATA,
+  MatBottomSheetRef,
+  MAT_DATE_LOCALE,
+  MAT_DATE_FORMATS
 } from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 
-
 // Form controls
 import { DatepickerComponent } from './formcontrols/datepicker/datepicker.component';
-import { MatDatepickerModule, MatDatepickerIntl } from '@angular/material/datepicker';
+import {
+  MatDatepickerModule,
+  MatDatepickerIntl
+} from '@angular/material/datepicker';
 import { FormfieldComponent } from './formcontrols/formfield/formfield.component';
 import { InputComponent } from './formcontrols/input/input.component';
 import { RadiobuttonComponent } from './formcontrols/radiobutton/radiobutton.component';
@@ -86,7 +87,12 @@ import { ProgressBarComponent } from './buttons-and-indicators/progress-bar/prog
 import { ProgressSpinnerComponent } from './buttons-and-indicators/progress-spinner/progress-spinner.component';
 import { RipplesComponent } from './buttons-and-indicators/ripples/ripples.component';
 // Popups & modals
-import { DialogComponent, ModalComponent, Modal2Component, Modal3Component } from './popups-and-modals/dialog/dialog.component';
+import {
+  DialogComponent,
+  ModalComponent,
+  Modal2Component,
+  Modal3Component
+} from './popups-and-modals/dialog/dialog.component';
 import { SnackbarComponent } from './popups-and-modals/snackbar/snackbar.component';
 import { MaterialTooltipComponent } from './popups-and-modals/material-tooltip/material-tooltip.component';
 import { BottomSheetComponent } from './popups-and-modals/bottom-sheet/bottom-sheet.component';
@@ -99,265 +105,264 @@ import { MaterialTableComponent } from './data-table/material-table/material-tab
 import { MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
 const routes: Routes = [
-	{
-		path: '',
-		component: MaterialComponent,
-		children: [
-			{
-				path: 'form-controls/autocomplete',
-				component: AutocompleteComponent
-			},
-			{
-				path: 'form-controls/checkbox',
-				component: CheckboxComponent
-			},
-			{
-				path: 'form-controls/datepicker',
-				component: DatepickerComponent
-			},
-			{
-				path: 'form-controls/formfield',
-				component: FormfieldComponent
-			},
-			{
-				path: 'form-controls/input',
-				component: InputComponent
-			},
-			{
-				path: 'form-controls/radiobutton',
-				component: RadiobuttonComponent
-			},
-			{
-				path: 'form-controls/select',
-				component: SelectComponent
-			},
-			{
-				path: 'form-controls/slider',
-				component: SliderComponent
-			},
-			{
-				path: 'form-controls/slidertoggle',
-				component: SlidertoggleComponent
-			},
-			{
-				path: 'navigation/menu',
-				component: MenuComponent
-			},
-			{
-				path: 'navigation/sidenav',
-				component: SidenavComponent
-			},
-			{
-				path: 'navigation/toolbar',
-				component: ToolbarComponent
-			},
-			{
-				path: 'layout/card',
-				component: CardComponent
-			},
-			{
-				path: 'layout/divider',
-				component: DividerComponent
-			},
-			{
-				path: 'layout/expansion-panel',
-				component: ExpansionPanelComponent
-			},
-			{
-				path: 'layout/grid-list',
-				component: GridListComponent
-			},
-			{
-				path: 'layout/list',
-				component: ListComponent
-			},
-			{
-				path: 'layout/tabs',
-				component: MaterialTabsComponent
-			},
-			{
-				path: 'layout/stepper',
-				component: StepperComponent
-			},
-			{
-				path: 'layout/default-forms',
-				component: DefaultFormsComponent
-			},
-			{
-				path: 'layout/tree',
-				component: TreeComponent
-			},
-			{
-				path: 'buttons-and-indicators/button',
-				component: ButtonComponent
-			},
-			{
-				path: 'buttons-and-indicators/button-toggle',
-				component: ButtonToggleComponent
-			},
-			{
-				path: 'buttons-and-indicators/chips',
-				component: ChipsComponent
-			},
-			{
-				path: 'buttons-and-indicators/icon',
-				component: IconComponent
-			},
-			{
-				path: 'buttons-and-indicators/progress-bar',
-				component: ProgressBarComponent
-			},
-			{
-				path: 'buttons-and-indicators/progress-spinner',
-				component: ProgressSpinnerComponent
-			},
-			{
-				path: 'buttons-and-indicators/ripples',
-				component: RipplesComponent
-			},
-			{
-				path: 'popups-and-modals/bottom-sheet',
-				component: BottomSheetComponent
-			},
-			{
-				path: 'popups-and-modals/dialog',
-				component: DialogComponent
-			},
-			{
-				path: 'popups-and-modals/snackbar',
-				component: SnackbarComponent
-			},
-			{
-				path: 'popups-and-modals/tooltip',
-				component: MaterialTooltipComponent
-			},
-			{
-				path: 'data'
-			},
-			{
-				path: 'data-table/paginator',
-				component: PaginatorComponent
-			},
-			{
-				path: 'data-table/sort-header',
-				component: SortHeaderComponent
-			},
-			{
-				path: 'data-table/table',
-				component: MaterialTableComponent
-			}
-		]
-	}
+  {
+    path: '',
+    component: MaterialComponent,
+    children: [
+      {
+        path: 'form-controls/autocomplete',
+        component: AutocompleteComponent
+      },
+      {
+        path: 'form-controls/checkbox',
+        component: CheckboxComponent
+      },
+      {
+        path: 'form-controls/datepicker',
+        component: DatepickerComponent
+      },
+      {
+        path: 'form-controls/formfield',
+        component: FormfieldComponent
+      },
+      {
+        path: 'form-controls/input',
+        component: InputComponent
+      },
+      {
+        path: 'form-controls/radiobutton',
+        component: RadiobuttonComponent
+      },
+      {
+        path: 'form-controls/select',
+        component: SelectComponent
+      },
+      {
+        path: 'form-controls/slider',
+        component: SliderComponent
+      },
+      {
+        path: 'form-controls/slidertoggle',
+        component: SlidertoggleComponent
+      },
+      {
+        path: 'navigation/menu',
+        component: MenuComponent
+      },
+      {
+        path: 'navigation/sidenav',
+        component: SidenavComponent
+      },
+      {
+        path: 'navigation/toolbar',
+        component: ToolbarComponent
+      },
+      {
+        path: 'layout/card',
+        component: CardComponent
+      },
+      {
+        path: 'layout/divider',
+        component: DividerComponent
+      },
+      {
+        path: 'layout/expansion-panel',
+        component: ExpansionPanelComponent
+      },
+      {
+        path: 'layout/grid-list',
+        component: GridListComponent
+      },
+      {
+        path: 'layout/list',
+        component: ListComponent
+      },
+      {
+        path: 'layout/tabs',
+        component: MaterialTabsComponent
+      },
+      {
+        path: 'layout/stepper',
+        component: StepperComponent
+      },
+      {
+        path: 'layout/default-forms',
+        component: DefaultFormsComponent
+      },
+      {
+        path: 'layout/tree',
+        component: TreeComponent
+      },
+      {
+        path: 'buttons-and-indicators/button',
+        component: ButtonComponent
+      },
+      {
+        path: 'buttons-and-indicators/button-toggle',
+        component: ButtonToggleComponent
+      },
+      {
+        path: 'buttons-and-indicators/chips',
+        component: ChipsComponent
+      },
+      {
+        path: 'buttons-and-indicators/icon',
+        component: IconComponent
+      },
+      {
+        path: 'buttons-and-indicators/progress-bar',
+        component: ProgressBarComponent
+      },
+      {
+        path: 'buttons-and-indicators/progress-spinner',
+        component: ProgressSpinnerComponent
+      },
+      {
+        path: 'buttons-and-indicators/ripples',
+        component: RipplesComponent
+      },
+      {
+        path: 'popups-and-modals/bottom-sheet',
+        component: BottomSheetComponent
+      },
+      {
+        path: 'popups-and-modals/dialog',
+        component: DialogComponent
+      },
+      {
+        path: 'popups-and-modals/snackbar',
+        component: SnackbarComponent
+      },
+      {
+        path: 'popups-and-modals/tooltip',
+        component: MaterialTooltipComponent
+      },
+      {
+        path: 'data'
+      },
+      {
+        path: 'data-table/paginator',
+        component: PaginatorComponent
+      },
+      {
+        path: 'data-table/sort-header',
+        component: SortHeaderComponent
+      },
+      {
+        path: 'data-table/table',
+        component: MaterialTableComponent
+      }
+    ]
+  }
 ];
 
 @NgModule({
-	imports: [
-		// material modules
-		MatInputModule,
-		MatFormFieldModule,
-		MatDatepickerModule,
-		MatAutocompleteModule,
-		MatListModule,
-		MatSliderModule,
-		MatCardModule,
-		MatSelectModule,
-		MatButtonModule,
-		MatIconModule,
-		MatNativeDateModule,
-		MatSlideToggleModule,
-		MatCheckboxModule,
-		MatMenuModule,
-		MatTabsModule,
-		MatTooltipModule,
-		MatSidenavModule,
-		MatProgressBarModule,
-		MatProgressSpinnerModule,
-		MatSnackBarModule,
-		MatTableModule,
-		MatGridListModule,
-		MatToolbarModule,
-		MatBottomSheetModule,
-		MatExpansionModule,
-		MatDividerModule,
-		MatSortModule,
-		MatStepperModule,
-		MatChipsModule,
-		MatPaginatorModule,
-		MatDialogModule,
-		MatRippleModule,
-		CoreModule,
-		CommonModule,
-		MatRadioModule,
-		MatTreeModule,
-		MatButtonToggleModule,
-		PartialsModule,
-		MaterialPreviewModule,
-		FormsModule,
-		ReactiveFormsModule,
-		CodePreviewModule,
-		RouterModule.forChild(routes)
-	],
-	exports: [RouterModule],
-	entryComponents: [
-		PizzaPartyComponent,
-		DialogComponent,
-		ModalComponent,
-		Modal2Component,
-		Modal3Component,
-		IconComponent,
-		TreeComponent,
-		BottomSheetExampleComponent
-	],
-	providers: [
-		MatIconRegistry,
-		{ provide: MatBottomSheetRef, useValue: {} },
-		{ provide: MAT_BOTTOM_SHEET_DATA, useValue: {} },
-		{ provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
-		{ provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
-
-	],
-	declarations: [
-		MaterialComponent,
-		AutocompleteComponent,
-		CheckboxComponent,
-		DatepickerComponent,
-		FormfieldComponent,
-		InputComponent,
-		RadiobuttonComponent,
-		SelectComponent,
-		SliderComponent,
-		SlidertoggleComponent,
-		MenuComponent,
-		SidenavComponent,
-		ToolbarComponent,
-		CardComponent,
-		DividerComponent,
-		ExpansionPanelComponent,
-		GridListComponent,
-		ListComponent,
-		MaterialTabsComponent,
-		StepperComponent,
-		ButtonComponent,
-		ButtonToggleComponent,
-		ChipsComponent,
-		IconComponent,
-		ProgressBarComponent,
-		ProgressSpinnerComponent,
-		DialogComponent,
-		ModalComponent,
-		Modal2Component,
-		Modal3Component,
-		PizzaPartyComponent,
-		SnackbarComponent,
-		MaterialTooltipComponent,
-		PaginatorComponent,
-		SortHeaderComponent,
-		MaterialTableComponent,
-		DefaultFormsComponent,
-		TreeComponent,
-		BottomSheetComponent,
-		BottomSheetExampleComponent,
-		RipplesComponent
-	]
+  imports: [
+    // material modules
+    MatInputModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatAutocompleteModule,
+    MatListModule,
+    MatSliderModule,
+    MatCardModule,
+    MatSelectModule,
+    MatButtonModule,
+    MatIconModule,
+    MatNativeDateModule,
+    MatSlideToggleModule,
+    MatCheckboxModule,
+    MatMenuModule,
+    MatTabsModule,
+    MatTooltipModule,
+    MatSidenavModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
+    MatSnackBarModule,
+    MatTableModule,
+    MatGridListModule,
+    MatToolbarModule,
+    MatBottomSheetModule,
+    MatExpansionModule,
+    MatDividerModule,
+    MatSortModule,
+    MatStepperModule,
+    MatChipsModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatRippleModule,
+    CoreModule,
+    CommonModule,
+    MatRadioModule,
+    MatTreeModule,
+    MatButtonToggleModule,
+    PartialsModule,
+    MaterialPreviewModule,
+    FormsModule,
+    ReactiveFormsModule,
+    CodePreviewModule,
+    RouterModule.forChild(routes)
+  ],
+  exports: [RouterModule],
+  entryComponents: [
+    PizzaPartyComponent,
+    DialogComponent,
+    ModalComponent,
+    Modal2Component,
+    Modal3Component,
+    IconComponent,
+    TreeComponent,
+    BottomSheetExampleComponent
+  ],
+  providers: [
+    MatIconRegistry,
+    { provide: MatBottomSheetRef, useValue: {} },
+    { provide: MAT_BOTTOM_SHEET_DATA, useValue: {} },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
+  ],
+  declarations: [
+    MaterialComponent,
+    AutocompleteComponent,
+    CheckboxComponent,
+    DatepickerComponent,
+    FormfieldComponent,
+    InputComponent,
+    RadiobuttonComponent,
+    SelectComponent,
+    SliderComponent,
+    SlidertoggleComponent,
+    MenuComponent,
+    SidenavComponent,
+    ToolbarComponent,
+    CardComponent,
+    DividerComponent,
+    ExpansionPanelComponent,
+    GridListComponent,
+    ListComponent,
+    MaterialTabsComponent,
+    StepperComponent,
+    ButtonComponent,
+    ButtonToggleComponent,
+    ChipsComponent,
+    IconComponent,
+    ProgressBarComponent,
+    ProgressSpinnerComponent,
+    DialogComponent,
+    ModalComponent,
+    Modal2Component,
+    Modal3Component,
+    PizzaPartyComponent,
+    SnackbarComponent,
+    MaterialTooltipComponent,
+    PaginatorComponent,
+    SortHeaderComponent,
+    MaterialTableComponent,
+    DefaultFormsComponent,
+    TreeComponent,
+    BottomSheetComponent,
+    BottomSheetExampleComponent,
+    RipplesComponent
+  ]
 })
 export class MaterialModule {}

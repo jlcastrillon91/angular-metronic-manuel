@@ -10,39 +10,43 @@ import { AuthDataContext } from '../../../../auth';
 import { ECommerceDataContext } from '../../../../e-commerce';
 // Models
 import { CarsDb } from './fake-db/cars';
+import { LinksDataContext } from '../../../../../dashboard/_server/links.data-context';
 
 @Injectable()
 export class FakeApiService implements InMemoryDbService {
-	/**
-	 * Service Constructore
-	 */
-	constructor() {}
+  /**
+   * Service Constructore
+   */
+  constructor() {}
 
-	/**
-	 * Create Fake DB and API
-	 */
-	createDb(): {} | Observable<{}> {
-		// tslint:disable-next-line:class-name
-		const db = {
-			// auth module
-			users: AuthDataContext.users,
-			roles: AuthDataContext.roles,
-			permissions: AuthDataContext.permissions,
+  /**
+   * Create Fake DB and API
+   */
+  createDb(): {} | Observable<{}> {
+    // tslint:disable-next-line:class-name
+    const db = {
+      // auth module
+      users: AuthDataContext.users,
+      roles: AuthDataContext.roles,
+      permissions: AuthDataContext.permissions,
 
-			// e-commerce
-			// customers
-			customers: ECommerceDataContext.customers,
-			// products
-			products: ECommerceDataContext.cars,
-			productRemarks: ECommerceDataContext.remarks,
-			productSpecs: ECommerceDataContext.carSpecs,
+      // e-commerce
+      // customers
+      customers: ECommerceDataContext.customers,
+      // products
+      products: ECommerceDataContext.cars,
+      productRemarks: ECommerceDataContext.remarks,
+      productSpecs: ECommerceDataContext.carSpecs,
 
-			// orders
-			orders: ECommerceDataContext.orders,
+      // orders
+      orders: ECommerceDataContext.orders,
 
-			// data-table
-			cars: CarsDb.cars
-		};
-		return db;
-	}
+      // data-table
+      cars: CarsDb.cars,
+
+      // links
+      links: LinksDataContext.links
+    };
+    return db;
+  }
 }
