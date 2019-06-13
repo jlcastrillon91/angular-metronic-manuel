@@ -263,18 +263,10 @@ export class LinksListComponent implements OnInit {
    * @param _item: Link
    */
   deleteLink(_item: Link) {
-    const _title: string = this.translate.instant(
-      'ECOMMERCE.CUSTOMERS.DELETE_CUSTOMER_SIMPLE.TITLE'
-    );
-    const _description: string = this.translate.instant(
-      'ECOMMERCE.CUSTOMERS.DELETE_CUSTOMER_SIMPLE.DESCRIPTION'
-    );
-    const _waitDescription: string = this.translate.instant(
-      'ECOMMERCE.CUSTOMERS.DELETE_CUSTOMER_SIMPLE.WAIT_DESCRIPTION'
-    );
-    const _deleteMessage = this.translate.instant(
-      'ECOMMERCE.CUSTOMERS.DELETE_CUSTOMER_SIMPLE.MESSAGE'
-    );
+    const _title: string = 'Delete Link';
+    const _description: string = 'Are you sure you want to delete this link?';
+    const _waitDescription: string = 'Link deleting, please wait...';
+    const _deleteMessage = 'Link has been deleted';
 
     const dialogRef = this.layoutUtilsService.deleteElement(
       _title,
@@ -298,18 +290,11 @@ export class LinksListComponent implements OnInit {
    * Delete selected links
    */
   deleteLinks() {
-    const _title: string = this.translate.instant(
-      'ECOMMERCE.CUSTOMERS.DELETE_CUSTOMER_MULTY.TITLE'
-    );
-    const _description: string = this.translate.instant(
-      'ECOMMERCE.CUSTOMERS.DELETE_CUSTOMER_MULTY.DESCRIPTION'
-    );
-    const _waitDesciption: string = this.translate.instant(
-      'ECOMMERCE.CUSTOMERS.DELETE_CUSTOMER_MULTY.WAIT_DESCRIPTION'
-    );
-    const _deleteMessage = this.translate.instant(
-      'ECOMMERCE.CUSTOMERS.DELETE_CUSTOMER_MULTY.MESSAGE'
-    );
+    const _title: string = 'Delete Links';
+    const _description: string =
+      'Are you sure to permanently delete selected links?';
+    const _waitDesciption: string = 'Links are being deleted, please wait...';
+    const _deleteMessage = 'Selected links have been deleted';
 
     const dialogRef = this.layoutUtilsService.deleteElement(
       _title,
@@ -365,9 +350,8 @@ export class LinksListComponent implements OnInit {
    * @param link: Link
    */
   editLink(link: Link) {
-    let saveMessageTranslateParam = 'ECOMMERCE.CUSTOMERS.EDIT.';
-    saveMessageTranslateParam += link.id > 0 ? 'UPDATE_MESSAGE' : 'ADD_MESSAGE';
-    const _saveMessage = this.translate.instant(saveMessageTranslateParam);
+    const _saveMessage =
+      link.id > 0 ? 'Link has been updated' : 'Link has been created';
     const _messageType = link.id > 0 ? MessageType.Update : MessageType.Create;
     const dialogRef = this.dialog.open(LinkEditComponent, {
       data: { link: link }
