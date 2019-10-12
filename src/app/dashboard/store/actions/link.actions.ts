@@ -14,6 +14,7 @@ export enum LinkActionTypes {
   ManyLinksDeleted = '[Links List Page] Many Link Deleted',
   LinksPageRequested = '[Links List Page] Links Page Requested',
   LinksPageLoaded = '[Links API] Links Page Loaded',
+  SelectedLinkLoaded = '[Links API] Selected Link Loaded',
   LinksPageCancelled = '[Links API] Links Page Cancelled',
   LinksPageToggleLoading = '[Links] Links Page Toggle Loading',
   LinkActionToggleLoading = '[Links] Links Action Toggle Loading'
@@ -41,18 +42,19 @@ export class LinkUpdated implements Action {
 
 export class OneLinkDeleted implements Action {
   readonly type = LinkActionTypes.OneLinkDeleted;
-  constructor(public payload: { id: number }) {}
+  constructor(public payload: { id: string }) {}
 }
 
 export class ManyLinksDeleted implements Action {
   readonly type = LinkActionTypes.ManyLinksDeleted;
-  constructor(public payload: { ids: number[] }) {}
+  constructor(public payload: { ids: string[] }) {}
 }
 
 export class LinksPageRequested implements Action {
   readonly type = LinkActionTypes.LinksPageRequested;
   constructor(public payload: { page: QueryParamsModel }) {}
 }
+
 
 export class LinksPageLoaded implements Action {
   readonly type = LinkActionTypes.LinksPageLoaded;

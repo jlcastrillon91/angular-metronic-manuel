@@ -1,16 +1,32 @@
 import { BaseModel } from '../../core/_base/crud/models/_base.model';
 
 export class Link extends BaseModel {
-  id: number;
-  url: string;
-  destination: string;
+  id: string;
   hits: number;
-  status: 'active' | 'inactive';
+  name: string;
+  slug: string
+  targetUrl: string
+  shortUrl: string
+  domainId: string
+  accountId: string
+  state:'active' | 'inactive';
+  userId: string
+  createdAt: string
+  updatedAt: string
+  metadata: string
 
   clear() {
-    this.url = '';
-    this.destination = '';
     this.hits = 0;
-    this.status = 'active';
+    this.state = 'active';
+    this.name = '';
+    this.slug = '';
+    this.targetUrl = '';
+    this.shortUrl = '';
+    this.domainId = '';
+    this.accountId = '';
+    this.userId = '';
+    this.createdAt = '';
+    this.updatedAt = '';
+    this.metadata = '';
   }
 }

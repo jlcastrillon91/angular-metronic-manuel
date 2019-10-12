@@ -1,0 +1,18 @@
+{
+   "users":[
+      {
+         "id":"5b1c078b-f348-431e-8f35-a41f78241ae1",
+         "firstName":"Jose Luis",
+         "lastName":"Castrillon",
+         "email":"jlcastrillon@protonmail.com",
+         "role":"admin",
+         "accounts":[
+
+         ],
+         "state":"active",
+         "createdAt":"2019-10-04T20:40:52.619Z",
+         "updatedAt":"2019-10-04T20:40:52.619Z",
+         "deletedAt":null
+      }
+   ]
+}

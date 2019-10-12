@@ -9,7 +9,7 @@ export interface LinksState extends EntityState<Link> {
   listLoading: boolean;
   actionsloading: boolean;
   totalCount: number;
-  lastCreatedLinkId: number;
+  lastCreatedLinkId: string;
   lastQuery: QueryParamsModel;
   showInitWaitingMessage: boolean;
 }

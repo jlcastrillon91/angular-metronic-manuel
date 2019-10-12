@@ -5,19 +5,19 @@
       <kt-custom-dropdown [config]="accountDropdownCfg"></kt-custom-dropdown>
     </div>
   </div>
-  
+
   <div class="col-md-2 kt-margin-bottom-10-mobile">
     <div class="kt-form__control">
       <kt-custom-dropdown [config]="domainsDropdownCfg"></kt-custom-dropdown>
     </div>
   </div>
-  
+
   <div class="col-md-2 kt-margin-bottom-10-mobile">
     <div class="kt-form__control">
       <kt-custom-dropdown [config]="usersDropdownCfg"></kt-custom-dropdown>
     </div>
   </div>
-  
+
   <div class="col-md-2 kt-margin-bottom-10-mobile">
     <div class="kt-form__control">
       <kt-custom-dropdown [config]="tagsDropdownCfg"></kt-custom-dropdown>
@@ -36,10 +36,10 @@
 </div>
 
 <kt-portlet>
-  
-  <kt-portlet-body>    
+
+  <kt-portlet-body>
     <div class="kt-form kt-margin-b-30">
-      
+
       <!-- start::GROUP ACTIONS -->
       <!-- Group actions list: 'Delete selected' | 'Fetch selected' | 'Update status for selected' -->
       <!-- Group actions are shared for all LISTS | See '../../_shared' folder -->
@@ -56,16 +56,16 @@
               <!-- for example: Selected records count: 4 -->
             </div>
             <div class="kt-form__control kt-form__group--inline">
-              
+
               <button (click)="deleteLinks()"
                 mat-raised-button
                 color="accent"
-                matTooltip="Delete selected links" 
+                matTooltip="Delete selected links"
                 class="mat-button-mt-4">
                 <mat-icon>delete</mat-icon>
                 Delete All
               </button>&nbsp;<!-- Call 'delete-entity-dialog' from _shared folder -->
-              
+
 
               <button (click)="fetchLinks()" mat-raised-button matTooltip="Fetch selected links" class="mat-button-mt-4">
                 <mat-icon>clear_all</mat-icon>
@@ -113,20 +113,20 @@
 
         <ng-container matColumnDef="_createdDate">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Created</mat-header-cell>
-          <mat-cell *matCellDef="let link">{{link._createdDate | date:'dd/MM/yyyy'}}</mat-cell>
+          <mat-cell *matCellDef="let link">{{link.createdAt | date:'dd/MM/yyyy'}}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="url">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Links</mat-header-cell>
           <mat-cell *matCellDef="let link">
-            <a href="ecommerce/customers#" class="kt-link">{{link.url}}</a>
+            <a href="ecommerce/customers#" class="kt-link">{{link.targetUrl}}</a>
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="destination">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Destination</mat-header-cell>
           <mat-cell *matCellDef="let link">
-            <a href="ecommerce/customers#" class="kt-link">{{link.destination}}</a>
+            <a href="ecommerce/customers#" class="kt-link">{{link.shortUrl}}</a>
           </mat-cell>
         </ng-container>
 
@@ -141,30 +141,30 @@
           <mat-header-cell *matHeaderCellDef mat-sort-header>Status</mat-header-cell>
           <mat-cell *matCellDef="let link" >
             <!-- <span class="kt-badge kt-badge--inline kt-badge--pill kt-badge--{{ getItemCssClassByStatus(link.status) }} kt-badge--wide">{{ link.status }}</span> -->
-            <span class="kt-badge kt-badge--{{ getItemCssClassByStatus(link.status) }} kt-badge--dot"></span>&nbsp;
-						<span class="kt--font-bold kt-font-{{ getItemCssClassByStatus(link.status) }}">{{ link.status }}</span>
+            <span class="kt-badge kt-badge--{{ getItemCssClassByStatus(link.state) }} kt-badge--dot"></span>&nbsp;
+						<span class="kt--font-bold kt-font-{{ getItemCssClassByStatus(link.state) }}">{{ link.state | titlecase }}</span>
           </mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="_updatedDate">
           <mat-header-cell *matHeaderCellDef mat-sort-header>Updated</mat-header-cell>
-          <mat-cell *matCellDef="let link">{{link._updatedDate | date:'dd/MM/yyyy' }}</mat-cell>
+          <mat-cell *matCellDef="let link">{{link.updatedAt | date:'dd/MM/yyyy' }}</mat-cell>
         </ng-container>
 
         <ng-container matColumnDef="actions">
           <mat-header-cell *matHeaderCellDef style="min-width: 200px">Actions</mat-header-cell>
-          <mat-cell *matCellDef="let link"   style="min-width: 200px">       
-            <button mat-icon-button color="primary" matTooltip="View">
+          <mat-cell *matCellDef="let link"   style="min-width: 200px">
+            <button mat-icon-button color="primary" matTooltip="View" (click)="detailsLink(link)">
               <mat-icon>visibility</mat-icon>
-            </button>&nbsp; 
+            </button>&nbsp;
 
             <button mat-icon-button color="primary" matTooltip="Do something">
               <mat-icon>redo</mat-icon>
-            </button>&nbsp; 
+            </button>&nbsp;
 
             <button mat-icon-button color="primary" matTooltip="Edit link" (click)="editLink(link)">
               <mat-icon>create</mat-icon>
-            </button>&nbsp;           
+            </button>&nbsp;
 
             <button mat-icon-button
               color="warn"
@@ -198,4 +198,3 @@
   <!-- end::Body -->
 
 </kt-portlet>
-  

@@ -6,6 +6,7 @@ import {
   MatDialog,
   MatSnackBar
 } from '@angular/material';
+import {Router} from '@angular/router';
 import { Link } from '../../models';
 import { SelectionModel } from '@angular/cdk/collections';
 import { Subscription, merge, fromEvent, of } from 'rxjs';
@@ -147,7 +148,8 @@ export class LinksListComponent implements OnInit {
     private layoutUtilsService: LayoutUtilsService,
     private translate: TranslateService,
     private store: Store<fromStore.LinksFeatureState>,
-    private uiHelper: UiHelperService
+    private uiHelper: UiHelperService,
+    private router: Router
   ) {}
 
   /**
@@ -306,7 +308,7 @@ export class LinksListComponent implements OnInit {
         return;
       }
 
-      const idsForDeletion: number[] = [];
+      const idsForDeletion: string[] = [];
       for (let i = 0; i < this.selection.selected.length; i++) {
         idsForDeletion.push(this.selection.selected[i].id);
       }
@@ -328,9 +330,9 @@ export class LinksListComponent implements OnInit {
     const messages = [];
     this.selection.selected.forEach(elem => {
       messages.push({
-        text: elem.url,
+        text: elem.targetUrl,
         id: elem.id.toString(),
-        status: elem.status
+        status: elem.state
       });
     });
     this.layoutUtilsService.fetchElements(messages);
@@ -351,8 +353,8 @@ export class LinksListComponent implements OnInit {
    */
   editLink(link: Link) {
     const _saveMessage =
-      link.id > 0 ? 'Link has been updated' : 'Link has been created';
-    const _messageType = link.id > 0 ? MessageType.Update : MessageType.Create;
+      link.id.length > 0 ? 'Link has been updated' : 'Link has been created';
+    const _messageType = link.id.length > 0 ? MessageType.Update : MessageType.Create;
     const dialogRef = this.dialog.open(LinkEditComponent, {
       data: { link: link }
     });
@@ -367,6 +369,10 @@ export class LinksListComponent implements OnInit {
       );
       this.loadLinksList();
     });
+  }
+
+  detailsLink(link: Link){
+    this.router.navigate([`app/dashboard/details/${link.id}`])
   }
 
   /**
@@ -398,7 +404,7 @@ export class LinksListComponent implements OnInit {
   getItemCssClassByStatus(status: 'active' | 'inactive'): string {
     switch (status) {
       case 'active':
-        return 'warning';
+        return 'success';
       case 'inactive':
         return 'danger';
     }

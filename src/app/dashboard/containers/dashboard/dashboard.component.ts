@@ -46,7 +46,7 @@ export class DashboardComponent implements OnInit {
             this.layoutConfigService.getConfig('colors.state.danger'),
             this.layoutConfigService.getConfig('colors.state.brand')
           ],
-          data: [35, 23, 13, 10, 19]
+          data: [25, 25, 13, 10, 19]
         }
       ]
     };

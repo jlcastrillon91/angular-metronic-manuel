@@ -17,7 +17,7 @@ export const selectLinksState = createSelector(
   feature => feature.links
 );
 
-export const selectLinkById = (linkId: number) =>
+export const selectLinkById = (linkId: string) =>
   createSelector(
     selectLinksState,
     linksState => linksState.entities[linkId]

@@ -34,7 +34,7 @@ export class LinksService {
     return this.http.get<Link[]>(API_LINK_URL);
   }
 
-  getLinkById(linkId: number): Observable<Link> {
+  getLinkById(linkId: string): Observable<Link> {
     return this.http.get<Link>(API_LINK_URL + `/${linkId}`);
   }
 
@@ -61,12 +61,12 @@ export class LinksService {
   }
 
   // DELETE => delete the link from the server
-  deleteLink(linkId: number): Observable<any> {
+  deleteLink(linkId: string): Observable<any> {
     const url = `${API_LINK_URL}/${linkId}`;
     return this.http.delete<Link>(url);
   }
 
-  deleteLinks(ids: number[] = []): Observable<any> {
+  deleteLinks(ids: string[] = []): Observable<any> {
     const tasks$ = [];
     const length = ids.length;
     // tslint:disable-next-line:prefer-const
@@ -74,5 +74,39 @@ export class LinksService {
       tasks$.push(this.deleteLink(ids[i]));
     }
     return forkJoin(tasks$);
+  }
+
+  getDateString(){
+    const date = new Date()
+    const dd = date.getDate()
+    const mm = date.getMonth() + 1
+    switch (mm) {
+      case 1:
+        return `Jan ${dd}`;
+      case 2:
+        return `Feb ${dd}`;
+      case 3:
+        return `Mar ${dd}`;
+      case 4:
+        return `Apr ${dd}`;
+      case 5:
+        return `May ${dd}`;
+      case 6:
+        return `Jun ${dd}`;
+      case 7:
+        return `Jul ${dd}`;
+      case 8:
+        return `Aug ${dd}`;
+      case 9:
+        return `Sep ${dd}`;
+      case 10:
+        return `Oct ${dd}`;
+      case 11:
+        return `Nov ${dd}`;
+      case 12:
+        return `Dec ${dd}`;
+      default:
+        break;
+    }
   }
 }

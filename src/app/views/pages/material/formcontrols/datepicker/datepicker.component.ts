@@ -468,7 +468,7 @@ export class DatepickerMomentExample {
   isCodeVisible: false
 };
 
-const moment = _rollupMoment || _moment;
+const momentDate = _rollupMoment || _moment;
 
 @Component({
   selector: 'kt-datepicker',
@@ -513,7 +513,7 @@ export class DatepickerComponent implements OnInit {
 
   startDate = new Date(1990, 0, 1);
   date = new FormControl(new Date());
-  date10 = new FormControl(moment([2017, 0, 1]));
+  // date10 = new FormControl(momentDate([2017, 0, 1]));
 
   serializedDate = new FormControl(new Date().toISOString());
   minDate = new Date(2011, 0, 1);

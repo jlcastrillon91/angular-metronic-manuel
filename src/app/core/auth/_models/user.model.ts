@@ -13,8 +13,8 @@ export class User extends BaseModel {
     pic: string;
     fullname: string;
     occupation: string;
-	companyName: string;
-	phone: string;
+	  companyName: string;
+	  phone: string;
     address: Address;
     socialNetworks: SocialNetworks;
 

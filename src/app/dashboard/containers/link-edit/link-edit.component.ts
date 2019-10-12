@@ -78,7 +78,7 @@ export class LinkEditComponent implements OnInit {
    * Returns page title
    */
   getTitle(): string {
-    if (this.link.id > 0) {
+    if (this.link.id.length > 0) {
       return `Edit link '${this.link.id}'`;
     }
 
@@ -105,13 +105,13 @@ export class LinkEditComponent implements OnInit {
     const link = new Link();
     link.id = this.link.id;
 
-    link.url = controls['url'].value;
-    link.destination = controls['destination'].value;
+    link.targetUrl = controls['url'].value;
+    link.shortUrl = controls['destination'].value;
     link.hits = controls['hits'].value;
-    link.status = this.link.id > 0 ? this.link.status : 'active';
+    link.state = this.link.id.length > 0 ? this.link.state : 'active';
 
     link._createdDate =
-      this.link.id > 0 ? this.link._createdDate : new Date().toISOString();
+      this.link.id.length > 0 ? this.link._createdDate : new Date().toISOString();
     link._updatedDate = new Date().toISOString();
 
     return link;
@@ -135,7 +135,7 @@ export class LinkEditComponent implements OnInit {
 
     const editedLink = this.prepareLink();
     console.log('editedLink', editedLink);
-    if (editedLink.id > 0) {
+    if (editedLink.id.length > 0) {
       this.updateLink(editedLink);
     } else {
       this.createLink(editedLink);

@@ -1,3 +1,4 @@
+import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview';
 // Angular
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -40,6 +41,7 @@ import {
   MatTooltipModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LinkDetailsComponent } from './containers/link-details/link-details.component';
 
 const MAT_MODULES = [
   MatInputModule,
@@ -72,11 +74,14 @@ const MAT_MODULES = [
     CoreModule,
     NgbModule,
     ...MAT_MODULES,
+    MatLinkPreviewModule,
+
     RouterModule.forChild([
       {
         path: '',
         component: fromContainers.DashboardComponent
-      }
+      },
+      { path: 'details/:id', component: LinkDetailsComponent },
     ]),
 
     // Store
@@ -94,7 +99,7 @@ const MAT_MODULES = [
       }
     }
   ],
-  declarations: [...fromContainers.containers],
+  declarations: [...fromContainers.containers, LinkDetailsComponent],
   entryComponents: [fromContainers.LinkEditComponent]
 })
 export class DashboardModule {}

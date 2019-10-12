@@ -1,0 +1,185 @@
+<div class="container-fluid">
+
+  <kt-portlet>
+    <!-- Header -->
+      <kt-portlet-body [class]="'kt-portlet__body--fit fa-border'">
+        <div class="row">
+          <div class="col-lg-10 col-md-6 col-sm-6">
+            <div class="row">
+              <div class="d-flex align-items-center">
+                <h5 class="font-weight-bold align-middle m-3">{{url.name}}</h5>
+                <span class="kt-badge kt-badge--{{ getItemCssClassByStatus(url.state) }} kt-badge--dot"></span>&nbsp;
+                <span class="kt--font-bold kt-font-{{ getItemCssClassByStatus(url.state) }}">{{ url.state | titlecase }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-2 col-md-6 col-sm-6">
+            <div class="pull-right">
+
+              <button  mat-icon-button color="default" matTooltip="Back" (click)="detailsLink()">
+                <mat-icon>arrow_back</mat-icon>
+              </button>
+              <button mat-icon-button color="default" matTooltip="Edit" (click)="detailsLink()">
+                <mat-icon>edit</mat-icon>
+              </button>
+              <button mat-icon-button color="danger" matTooltip="Remove" (click)="detailsLink()">
+                <i class="material-icons md-36 redSecundary">delete</i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </kt-portlet-body>
+
+      <!-- Sub header -->
+      <div class="background-secundary">
+        <div class="row">
+          <div class="col-6">
+            <div class="row">
+              <p class="m-3">Created at:  <b class="text-primary">{{url.createdAt | date: "dd/mm/yyyy - hh:mm a"}}</b></p>
+              <p class="m-3">By:  <b class="text-primary">{{user.firstName}}</b></p>
+            </div>
+          </div>
+          <div class="col-6">
+            <div class="d-flex flex-row-reverse">
+              <div class="row">
+                <p class="m-3">Last Update:  <b class="text-primary">{{url.updatedAt | date: "dd/mm/yyyy - hh:mm a"}}</b></p>
+                <p class="m-3">By:  <b class="text-primary">{{user.firstName}}</b></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="m-5">
+        <h5 class="text-center font-weight-bold">Destination Preview</h5>
+        <div class="col-10 offset-1">
+          <div class="card background-secundary">
+            <div class="card-body background-secundary fa-border">
+                <p class="text-center"><a matLinkPreview href="{{url.targetUrl}}">{{url.targetUrl}}</a></p>
+
+            </div>
+            <div class="card-body background-secundary fa-border">
+                <!-- <textarea value="{{url.targetUrl}}" matInput matTextareaAutosize matLinkPreview autofocus="true" minRows="6"></textarea> -->
+                <!-- <mat-link-preview-container [color]="'#F8F9FF'" [multiple]="true"></mat-link-preview-container> -->
+                <!-- LinkPreview Section -->
+              <div *ngIf="urlPreview" class="row">
+                <div class="col">
+                  <img src="{{urlPreview.image}}" />
+                </div>
+                <div class="col">
+                  <h5 class="font-weight-bold">{{urlPreview.title}}</h5>
+                  <p>{{urlPreview.description}}</p>
+                  <br/>
+                  <p>URL: <span class="font-weight-bold">{{urlPreview.url}}</span></p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </kt-portlet>
+<!-- Stats -->
+<div class="background-secundary">
+  <div class="row background-secundary">
+
+    <div class="col-2 kt-margin-bottom-10-mobile">
+      <div class="kt-form__control">
+        <kt-custom-dropdown [config]="createdDropdownCfg"></kt-custom-dropdown>
+      </div>
+    </div>
+
+    <div class="offset-4 col-6 kt-margin-bottom-10-mobile">
+      <div class="kt-form__control">
+        <button class="mr-3 pull-right"  mat-icon-button color="Success" matTooltip="Download" (click)="detailsLink()">
+            <i class="material-icons md-36 blueSecundary">move_to_inbox</i>
+        </button>
+        <button class="pull-right" type="button">Pays</button>
+        <button class="mr-3 pull-right" type="button">Global</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-12">
+          <kt-widget14
+            [title]="'Visits for days'"
+            [desc]="'Over the last 14 days'"
+            [options]="barchartOptions"></kt-widget14>
+        </div>
+  </div>
+</div>
+<!-- More stats -->
+<div class="text-center m-4">
+    <a href="javascript:;"
+    class="btn btn-primary btn-bold custom-btn">
+    <i class="flaticon2-plus"></i>
+    Show more stats
+  </a>
+</div>
+<div class="row">
+  <div class="col-lg-4">
+      <kt-portlet>
+        <kt-portlet-body  [class]="'kt-portlet__body--fit fa-border'">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+              <h5 class="font-weight-bold align-middle m-3">QR Code</h5>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="pull-right">
+                  <button mat-icon-button color="default" matTooltip="Back" (click)="detailsLink()">
+                    <i class="material-icons md-36 blueSecundary">arrow_back</i>
+                  </button>
+                  <button  mat-icon-button color="default" matTooltip="Download" (click)="detailsLink()">
+                      <i class="material-icons md-36 blueSecundary">move_to_inbox</i>
+                    </button>
+                </div>
+            </div>
+          </div>
+        </kt-portlet-body>
+        <kt-portlet-body [class]="'kt-portlet__body--fit fa-border'">
+          <img class="img-fluid mx-auto d-block m-3" src="../../../../assets/media/bg/qr_code.JPG">
+        </kt-portlet-body>
+      </kt-portlet>
+  </div>
+  <div class="col-lg-8">
+      <kt-portlet>
+          <kt-portlet-body [class]="'kt-portlet__body--fit fa-border'">
+              <h5 class="font-weight-bold align-middle m-3">Activity History</h5>
+          </kt-portlet-body>
+          <kt-portlet-body [class]="'kt-portlet__body--fit fa-border'">
+              <table class="table borderless align-middle m-3">
+                <tr *ngFor="let activity of activityHistory">
+                  <td>{{activity.date}}</td>
+                  <td>
+                    <a href="javascript:;" class="btn btn-{{activity.color}}"></a>
+                  </td>
+                  <td>
+                    <div class="row">
+                      <p class="text-primary font-weight-bold">{{activity.userName}}</p>
+                      <p> {{activity.description}}</p>
+
+                    </div>
+                  </td>
+                  <td>
+                    <button  mat-icon-button color="default" matTooltip="View" (click)="detailsLink()">
+                      <i class="material-icons">remove_red_eye</i>
+                    </button>
+                    <button mat-icon-button color="default" matTooltip="Restore" (click)="detailsLink()">
+                      <i class="material-icons">settings_backup_restore</i>
+                    </button>
+                  </td>
+                </tr>
+              </table>
+              <div class="text-center m-2">
+                  <button type="button"
+                  class="btn grey-cascade">
+                  <i class="material-icons">date_range</i>
+                  View more logs
+                  </button>
+              </div>
+          </kt-portlet-body>
+        </kt-portlet>
+  </div>
+
+</div>

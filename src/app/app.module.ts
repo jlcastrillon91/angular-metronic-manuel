@@ -1,3 +1,4 @@
+import { MatLinkPreviewModule } from '@angular-material-extensions/link-preview';
 // Angular
 import {
   BrowserModule,
@@ -129,7 +130,8 @@ export function hljsLanguages(): HighlightLanguage[] {
     NgbModule,
     TranslateModule.forRoot(),
     MatProgressSpinnerModule,
-    InlineSVGModule.forRoot()
+    InlineSVGModule.forRoot(),
+    MatLinkPreviewModule.forRoot()
   ],
   exports: [],
   providers: [
