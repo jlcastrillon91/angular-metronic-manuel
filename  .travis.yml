@@ -2,17 +2,27 @@ language: node_js
 node_js:
   - "9"
 dist: trusty
-sudo: requiredbranches:
+sudo: false
+
+branches:
   only:
-  - masterbefore_script:
-  - npm install -g @angular/cliscript:
-  - ng lint
-  - npm run test-headless
-  - ng build --prod --base-href https://t-palmer.github.io/angular-metronic-manuel/deploy:
+  - master
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install -g yarn
+
+script:
+  - yarn lint
+  - yarn build --base-href /metronic/
+  - mv dist/metronic/index.html dist/metronic/404.html
+deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   local_dir: dist/metronic
   on:
-    branch: master
-
+branch: master
