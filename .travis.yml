@@ -16,7 +16,6 @@ install:
   - npm install -g yarn
 
 script:
-  - yarn lint
   - yarn build --base-href /metronic/
   - mv dist/metronic/index.html dist/metronic/404.html
 deploy:
@@ -26,4 +25,3 @@ deploy:
   local_dir: dist/metronic
   on:
 branch: master
-  
