@@ -16,7 +16,8 @@ install:
   - npm install -g yarn
 
 script:
-  - yarn build --base-href /metronic/
+  - npm install
+  - npm run build --base-href /metronic/
   - mv dist/metronic/index.html dist/metronic/404.html
 deploy:
   provider: pages
