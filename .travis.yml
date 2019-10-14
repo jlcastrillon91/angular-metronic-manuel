@@ -17,7 +17,7 @@ install:
 
 script:
   - npm install
-  - npm run build --base-href /metronic/
+  - npm run build
   - mv dist/metronic/index.html dist/metronic/404.html
 deploy:
   provider: pages
